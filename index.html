@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Secure Portal</title>
+    <title>Test Portal</title>
     <style>
-        body { 
-            background: #000; 
-            color: #fff; 
-            font-family: Arial; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             flex-direction: column;
+            margin: 0;
         }
-        #submitBtn { display: none; margin-top: 10px; }
+        #submitBtn {
+            display: none;
+            margin-top: 10px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -22,11 +35,13 @@
     <button id="submitBtn">Enter</button>
 
     <script>
-        const correctPassword = "test123"; // Replace with your real password
+        // Change this to whatever password you want
+        const correctPassword = "test123";
 
         const passwordInput = document.getElementById("password");
         const submitBtn = document.getElementById("submitBtn");
 
+        // Show the button only when the password matches
         passwordInput.addEventListener("input", () => {
             if (passwordInput.value === correctPassword) {
                 submitBtn.style.display = "block";
@@ -35,10 +50,12 @@
             }
         });
 
+        // When button is clicked, replace the whole page with an iframe
         submitBtn.addEventListener("click", () => {
             document.body.innerHTML = `
-                <iframe src="https://YOUR-REMOTE-BROWSER-URL" 
-                        style="width:100vw; height:100vh; border:none;">
+                <iframe 
+                    src="https://example.com" 
+                    style="width:100vw; height:100vh; border:none; margin:0; padding:0;">
                 </iframe>
             `;
         });
